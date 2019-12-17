@@ -182,7 +182,7 @@ class MonotoneHistoryParser implements Executor.StreamHandler {
                     entry.appendMessage(s);
                     break;
                 default:
-                    LOGGER.warning("Unknown parser state: " + state);
+                    LOGGER.fine("Unknown parser state: " + state);
                     break;
             }
         }

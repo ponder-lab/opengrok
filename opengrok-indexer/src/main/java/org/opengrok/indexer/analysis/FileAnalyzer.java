@@ -191,7 +191,7 @@ public class FileAnalyzer extends AbstractAnalyzer {
                 return new TokenStreamComponents(createPlainSymbolTokenizer());
             default:
                 LOGGER.log(
-                        Level.WARNING, "Have no analyzer for: {0}", fieldName);
+                        Level.FINEST, "Have no analyzer for: {0}", fieldName);
                 return null;
         }
     }

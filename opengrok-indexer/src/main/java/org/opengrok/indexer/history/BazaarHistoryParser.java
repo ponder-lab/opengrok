@@ -179,7 +179,7 @@ class BazaarHistoryParser implements Executor.StreamHandler {
                     }
                     break;
                 default:
-                    LOGGER.log(Level.WARNING, "Unknown parser state: {0}", state);
+                    LOGGER.log(Level.FINEST, "Unknown parser state: {0}", state);
                     break;
                 }
         }

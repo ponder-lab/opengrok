@@ -110,7 +110,7 @@ public class LdapAttrPlugin extends AbstractLdapPlugin {
             throw new IllegalArgumentException(String.format("Unable to read the file \"%s\"", filePath), e);
         }
 
-        LOGGER.log(Level.FINE, "LdapAttrPlugin plugin loaded with attr={0}, whitelist={1}, instance={2}",
+        LOGGER.log(Level.FINER, "LdapAttrPlugin plugin loaded with attr={0}, whitelist={1}, instance={2}",
                 new Object[]{ldapAttr, filePath, ldapUserInstance});
     }
 
@@ -165,7 +165,7 @@ public class LdapAttrPlugin extends AbstractLdapPlugin {
             }
 
             if (records == null || records.isEmpty() || (attributeValues = records.get(ldapAttr)) == null) {
-                LOGGER.log(Level.WARNING, "empty records or attribute values {0} for user {1}",
+                LOGGER.log(Level.SEVERE, "empty records or attribute values {0} for user {1}",
                         new Object[]{ldapAttr, user});
                 return;
             }

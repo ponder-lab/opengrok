@@ -98,7 +98,7 @@ public class GZIPAnalyzer extends FileAnalyzer {
             }
             if (fa == null) {
                 this.g = Genre.DATA;
-                LOGGER.log(Level.WARNING, "Did not analyze {0}, detected as data.", newname);
+                LOGGER.log(Level.FINEST, "Did not analyze {0}, detected as data.", newname);
                 //TODO we could probably wrap tar analyzer here, need to do research on reader coming from gzis ...
             } else { // cant recurse!
                 //simple file gziped case captured here
