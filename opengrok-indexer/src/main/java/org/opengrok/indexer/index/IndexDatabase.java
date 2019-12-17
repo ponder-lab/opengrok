@@ -246,7 +246,7 @@ public class IndexDatabase {
         for (String path : paths) {
             Project project = Project.getProject(path);
             if (project == null && env.hasProjects()) {
-                LOGGER.log(Level.WARNING, "Could not find a project for \"{0}\"", path);
+                LOGGER.log(Level.FINER, "Could not find a project for \"{0}\"", path);
             } else {
                 IndexDatabase db;
 
@@ -608,7 +608,7 @@ public class IndexDatabase {
         try {
             Statistics elapsed = new Statistics();
             String projectDetail = this.project != null ? " for project " + project.getName() : "";
-            LOGGER.log(Level.INFO, "Optimizing the index{0}", projectDetail);
+            LOGGER.log(Level.FINE, "Optimizing the index{0}", projectDetail);
             Analyzer analyzer = new StandardAnalyzer();
             IndexWriterConfig conf = new IndexWriterConfig(analyzer);
             conf.setOpenMode(OpenMode.CREATE_OR_APPEND);
@@ -1331,7 +1331,7 @@ public class IndexDatabase {
             String exmsg = String.format(
                 "%d failures (%.1f%%) while parallel-indexing",
                 failureCount, pctFailed);
-            LOGGER.log(Level.WARNING, exmsg);
+            LOGGER.log(Level.FINER, exmsg);
         }
 
         /**
@@ -1382,7 +1382,7 @@ public class IndexDatabase {
                 for (String path : subFiles) {
                     Project project = Project.getProject(path);
                     if (project == null) {
-                        LOGGER.log(Level.WARNING, "Could not find a project for \"{0}\"", path);
+                        LOGGER.log(Level.FINER, "Could not find a project for \"{0}\"", path);
                     } else {
                         IndexDatabase db = new IndexDatabase(project);
                         files.addAll(db.getFiles());
@@ -1481,7 +1481,7 @@ public class IndexDatabase {
                 for (String path : subFiles) {
                     Project project = Project.getProject(path);
                     if (project == null) {
-                        LOGGER.log(Level.WARNING, "Could not find a project for \"{0}\"", path);
+                        LOGGER.log(Level.FINEST, "Could not find a project for \"{0}\"", path);
                     } else {
                         IndexDatabase db = new IndexDatabase(project);
                         db.listTokens(limit);
@@ -1702,7 +1702,7 @@ public class IndexDatabase {
             hasPendingCommit = true;
 
             int n = completer.complete();
-            LOGGER.log(Level.FINE, "completed {0} object(s)", n);
+            LOGGER.log(Level.FINEST, "completed {0} object(s)", n);
 
             // Just before commit(), reset the `hasPendingCommit' flag,
             // since after commit() is called, there is no need for

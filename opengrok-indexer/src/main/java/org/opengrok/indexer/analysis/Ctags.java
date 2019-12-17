@@ -131,7 +131,7 @@ public class Ctags implements Resettable {
         IOUtils.close(ctagsIn);
         if (ctags != null) {
             closing = true;
-            LOGGER.log(Level.FINE, "Destroying ctags command");
+            LOGGER.log(Level.FINEST, "Destroying ctags command");
             ctags.destroyForcibly();
         }
     }
@@ -399,7 +399,7 @@ public class Ctags implements Resettable {
                 int exitValue = ctags.exitValue();
                 // If it is possible to retrieve exit value without exception
                 // this means the ctags process is dead.
-                LOGGER.log(Level.WARNING, "Ctags process exited with exit value {0}",
+                LOGGER.log(Level.FINER, "Ctags process exited with exit value {0}",
                         exitValue);
                 // Throw the following to indicate non-I/O error for retry.
                 throw new InterruptedException("ctags process died");
@@ -567,7 +567,7 @@ public class Ctags implements Resettable {
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "CTags parsing problem: ", e);
         }
-        LOGGER.severe("CTag reader cycle was interrupted!");
+        LOGGER.finest("CTag reader cycle was interrupted!");
     }
 
     /**

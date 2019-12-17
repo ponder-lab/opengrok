@@ -351,7 +351,7 @@ public class SuggesterServiceImpl implements SuggesterService {
             return;
         }
 
-        logger.log(Level.INFO, "Scheduling suggester rebuild in {0}", timeToNextRebuild);
+        logger.log(Level.FINEST, "Scheduling suggester rebuild in {0}", timeToNextRebuild);
 
         future = instance.scheduler.schedule(instance.getRebuildAllProjectsRunnable(), timeToNextRebuild.toMillis(),
                 TimeUnit.MILLISECONDS);

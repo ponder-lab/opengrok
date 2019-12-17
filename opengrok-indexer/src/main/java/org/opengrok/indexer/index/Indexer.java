@@ -872,7 +872,7 @@ public final class Indexer {
         if (filename != null) {
             LOGGER.log(Level.INFO, "Writing configuration to {0}", filename);
             env.writeConfiguration(new File(filename));
-            LOGGER.info("Done...");
+            LOGGER.finest("Done...");
         }
     }
 
@@ -976,14 +976,14 @@ public final class Indexer {
         if (createHistoryCache) {
             // Even if history is disabled globally, it can be enabled for some repositories.
             if (repositories != null && !repositories.isEmpty()) {
-                LOGGER.log(Level.INFO, "Generating history cache for repositories: " +
+                LOGGER.log(Level.FINER, "Generating history cache for repositories: " +
                         repositories.stream().collect(Collectors.joining(",")));
                 HistoryGuru.getInstance().createCache(repositories);
-                LOGGER.info("Done...");
+                LOGGER.finer("Done...");
             } else {
-                LOGGER.log(Level.INFO, "Generating history cache for all repositories ...");
+                LOGGER.log(Level.FINER, "Generating history cache for all repositories ...");
                 HistoryGuru.getInstance().createCache();
-                LOGGER.info("Done...");
+                LOGGER.finer("Done...");
             }
         }
 
@@ -1026,7 +1026,7 @@ public final class Indexer {
             for (String path : subFiles) {
                 Project project = Project.getProject(path);
                 if (project == null && env.hasProjects()) {
-                    LOGGER.log(Level.WARNING, "Could not find a project for \"{0}\"", path);
+                    LOGGER.log(Level.FINE, "Could not find a project for \"{0}\"", path);
                 } else {
                     IndexDatabase db;
                     if (project == null) {

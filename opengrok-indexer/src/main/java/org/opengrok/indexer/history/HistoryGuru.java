@@ -713,7 +713,7 @@ public final class HistoryGuru {
             File f = new File(srcRoot, file);
             Repository r = getRepository(f);
             if (r == null) {
-                LOGGER.log(Level.WARNING, "Could not locate a repository for {0}",
+                LOGGER.log(Level.FINEST, "Could not locate a repository for {0}",
                         f.getAbsolutePath());
             } else if (!repos.contains(r)) {
                 repos.add(r);

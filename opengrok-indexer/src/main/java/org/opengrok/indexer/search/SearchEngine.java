@@ -541,7 +541,7 @@ public class SearchEngine {
                                 }
                             }
                         } else {
-                            LOGGER.log(Level.WARNING, "Unknown genre: {0} for {1}", new Object[]{genre, filename});
+                            LOGGER.log(Level.INFO, "Unknown genre: {0} for {1}", new Object[]{genre, filename});
                             hasContext |= sourceContext.getContext(null, null, null, null, filename, tags, false, false, ret, scopes);
                         }
                     } catch (FileNotFoundException exp) {
