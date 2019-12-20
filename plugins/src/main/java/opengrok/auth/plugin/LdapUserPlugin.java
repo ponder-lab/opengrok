@@ -104,7 +104,7 @@ public class LdapUserPlugin extends AbstractLdapPlugin {
             instance = Integer.parseInt(instance_param);
         }
 
-        LOGGER.log(Level.FINE, "LdapUser plugin loaded with filter={0}, " +
+        LOGGER.log(Level.FINER, "LdapUser plugin loaded with filter={0}, " +
                         "attributes={1}, useDN={2}, instance={3}",
                 new Object[]{ldapFilter, attributes, useDN, instance});
     }
@@ -165,7 +165,7 @@ public class LdapUserPlugin extends AbstractLdapPlugin {
             AbstractLdapProvider.LdapSearchResult<Map<String, Set<String>>> res;
             if ((res = getLdapProvider().lookupLdapContent(dn, expandedFilter,
                     attributes.toArray(new String[0]))) == null) {
-                LOGGER.log(Level.WARNING, "failed to get LDAP attributes ''{2}'' for user {0} " +
+                LOGGER.log(Level.SEVERE, "failed to get LDAP attributes ''{2}'' for user {0} " +
                                 "with filter ''{1}'' from LDAP provider {3}",
                         new Object[]{user, expandedFilter, attributes, getLdapProvider()});
                 return;
@@ -180,14 +180,14 @@ public class LdapUserPlugin extends AbstractLdapPlugin {
         }
 
         if (records.isEmpty()) {
-            LOGGER.log(Level.WARNING, "LDAP records for user {0} are empty",
+            LOGGER.log(Level.SEVERE, "LDAP records for user {0} are empty",
                     user);
             return;
         }
 
         for (String attrName : attributes) {
             if (!records.containsKey(attrName) || records.get(attrName) == null || records.get(attrName).isEmpty()) {
-                LOGGER.log(Level.WARNING, "''{0}'' record for user {1} is not present or empty (LDAP provider: {2})",
+                LOGGER.log(Level.SEVERE, "''{0}'' record for user {1} is not present or empty (LDAP provider: {2})",
                         new Object[]{attrName, user, getLdapProvider()});
             }
         }
