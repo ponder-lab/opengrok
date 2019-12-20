@@ -125,7 +125,7 @@ class SuggesterProjectData implements Closeable {
             } else if (!indexedFields.containsAll(fields)) {
                 Set<String> copy = new HashSet<>(fields);
                 copy.removeAll(indexedFields);
-                logger.log(Level.WARNING,
+                logger.log(Level.FINEST,
                         "Fields {0} will be ignored because they were not found in index directory {1}",
                         new Object[] {copy, indexDir});
 
